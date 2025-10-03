@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeliveryApp - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <a class="logo-link" href="dashboard.html">
+                <div class="logo">
+                    <h1>🚚 DeliveryApp</h1>
+                </div>
+            </a>
+            <nav class="nav-buttons">
+                <button class="nav-btn active" id="btnInicio">Inicio</button>
+                <button class="nav-btn" id="btnPedidos">Mis Pedidos</button>
+                <button class="nav-btn" id="btnUsuarioDemo">Usuario Demo</button>
+                <button class="nav-btn logout-btn" id="logoutBtn">Cerrar Sesión</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Search and Filters Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar restaurantes o comida">
+                <button id="searchBtn" class="search-btn">🔍</button>
+            </div>
+            <div class="filters">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">Todas las categorías</option>
+                </select>
+                <select id="zoneFilter" class="filter-select">
+                    <option value="all">Todas las ubicaciones</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-container">
+            <h2 class="section-title">Restaurantes Populares</h2>
+
+            <!-- Restaurants Container -->
+            <div id="restaurantsContainer" class="restaurants-grid">
+                <!-- Loading placeholder -->
+                <div class="loading">Cargando restaurantes...</div>
+            </div>
+        </div>
+    </main>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h1>Tu Carrito</h1>
+            <button class="close-cart">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cartTotal">0.00</span></strong>
+            </div>
+            <button class="btn btn-primary" id="checkoutBtn" disabled>Realizar Pedido</button>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalProductName"></h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="modalProductDescription"></p>
+                <div class="quantity-section">
+                    <label>Cantidad:</label>
+                    <input type="number" id="modalQuantity" min="1" value="1" onchange="updateModalTotal()">
+                </div>
+                <div class="extras-section">
+                    <label>Extras:</label>
+                    <div id="modalExtras">
+                        <!-- Extras checkboxes will be populated here -->
+                    </div>
+                </div>
+                <div class="modal-total">
+                    <strong>Total: $<span id="modalTotal">0.00</span></strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="addFromModal()">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Toggle Button -->
+    <button class="cart-toggle">
+        🛒 <span id="cartCount">0</span>
+    </button>
+    <!-- Scripts -->
+    <script src="js/cart.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeliveryApp - Mis Pedidos</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+                <a href="dashboard.html" class="nav-link">
+                    <div class="logo">
+                    <h2>🚚 DeliveryApp</h2>
+                    </div>
+                </a>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link">Inicio</a>
+                <a href="orders.html" class="nav-link active">Mis Pedidos</a>
+                <div class="nav-user">
+                    <span id="userNameDisplay">Usuario</span>
+                    <button id="logoutBtn" class="btn btn-secondary btn-small">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Mis Pedidos</h1>
+                <p>Aquí puedes ver el historial de todos tus pedidos</p>
+            </div>
+
+            <div class="orders-filter">
+                <button class="filter-btn active" data-status="all">Todos</button>
+                <button class="filter-btn" data-status="pending">Pendientes</button>
+                <button class="filter-btn" data-status="preparing">Preparando</button>
+                <button class="filter-btn" data-status="delivering">En Camino</button>
+                <button class="filter-btn" data-status="delivered">Entregados</button>
+                <button class="filter-btn" data-status="cancelled">Cancelados</button>
+            </div>
+
+            <div class="user-orders-list" id="userOrdersList">
+                <!-- Orders will be loaded here -->
+            </div>
+
+            <div class="empty-orders" id="emptyOrders" style="display: none;">
+                <div class="empty-state">
+                    <div class="empty-icon">📋</div>
+                    <h3>No tienes pedidos</h3>
+                    <p>¡Haz tu primer pedido y aparecerá aquí!</p>
+                    <a href="dashboard.html" class="btn btn-primary">Explorar Restaurantes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/orders.js"></script>
+</body>
+</html>

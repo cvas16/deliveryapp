@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panel Admin - Delivery App</title>
+    <link rel="stylesheet" href="admin-dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <nav class="sidebar">
+        <div class="sidebar-header">
+          <h2>DeliveryApp Admin</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li class="active" data-tab="dashboard">Dashboard</li>
+          <li data-tab="restaurants">Restaurantes</li>
+          <li data-tab="orders">Pedidos</li>
+          <li data-tab="delivery">Repartidores</li>
+          <li data-tab="reports">Reportes</li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <h1>Panel de Administración</h1>
+          <button id="logoutBtn" class="logout-btn">Cerrar Sesión</button>
+        </header>
+
+        <!-- Tab Contents -->
+        <div id="dashboard" class="tab-content active">
+          <!-- Metrics Grid -->
+          <section class="metrics-grid">
+            <div class="metric-card">
+              <h3>Total Pedidos</h3>
+              <p id="totalOrders">0</p>
+            </div>
+            <div class="metric-card">
+              <h3>Total Usuarios</h3>
+              <p id="totalUsers">0</p>
+            </div>
+            <div class="metric-card">
+              <h3>Repartidores Disponibles</h3>
+              <p id="availableDelivery">0</p>
+            </div>
+            <div class="metric-card">
+              <h3>Tiempo Promedio</h3>
+              <p id="avgTime">0 min</p>
+            </div>
+          </section>
+
+          <!-- Charts Section -->
+          <section class="charts-section">
+            <div class="chart-container">
+              <h3>Pedidos por Hora</h3>
+              <canvas id="barChart"></canvas>
+            </div>
+            <div class="chart-container">
+              <h3>Categorías Más Populares</h3>
+              <canvas id="pieChart"></canvas>
+            </div>
+          </section>
+        </div>
+
+        <div id="restaurants" class="tab-content">
+          <section class="management-section">
+            <h2>Gestión de Restaurantes</h2>
+            <button id="addRestaurantBtn" class="action-btn">
+              Agregar Restaurante
+            </button>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Categoría</th>
+                  <th>Ubicación</th>
+                  <th>Estado</th>
+                  <th>Rating</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pizza Palace</td>
+                  <td>Pizza</td>
+                  <td>Zona Norte</td>
+                  <td><span class="status active">ACTIVO</span></td>
+                  <td>4.5 <span class="star">⭐</span></td>
+                  <td>
+                    <button class="btn edit">Editar</button>
+                    <button class="btn deactivate">Desactivar</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Burger House</td>
+                  <td>Hamburguesas</td>
+                  <td>Centro</td>
+                  <td><span class="status active">ACTIVO</span></td>
+                  <td>4.2 <span class="star">⭐</span></td>
+                  <td>
+                    <button class="btn edit">Editar</button>
+                    <button class="btn deactivate">Desactivar</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Sushi Master</td>
+                  <td>Sushi</td>
+                  <td>Zona Sur</td>
+                  <td><span class="status inactive">INACTIVO</span></td>
+                  <td>4.8 <span class="star">⭐</span></td>
+                  <td>
+                    <button class="btn edit">Editar</button>
+                    <button class="btn activate">Activar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+        <div id="orders" class="tab-content">
+          <section class="management-section">
+            <h2>Gestión de Pedidos</h2>
+            <div class="order-filters">
+              <button class="filter-btn all active">Todos</button>
+              <button class="filter-btn pending">Pendientes</button>
+              <button class="filter-btn preparing">Preparando</button>
+              <button class="filter-btn delivered">Entregados</button>
+            </div>
+            <div id="orderList" class="data-list orders-list">
+              <div class="order-card pending">
+                <h3>
+                  #12345 <span class="status-label pending">PENDIENTE</span>
+                </h3>
+                <p><strong>Cliente:</strong> Juan Pérez</p>
+                <p><strong>Restaurante:</strong> Pizza Palace</p>
+                <p><strong>Dirección:</strong> Calle 123 #45-67</p>
+                <p><strong>Total:</strong> $25.00</p>
+                <p><strong>Hora:</strong> 2:30 PM</p>
+                <button class="btn confirm">Confirmar</button>
+                <button class="btn cancel">Cancelar</button>
+              </div>
+              <div class="order-card preparing">
+                <h3>
+                  #12346 <span class="status-label preparing">PREPARANDO</span>
+                </h3>
+                <p><strong>Cliente:</strong> María García</p>
+                <p><strong>Restaurante:</strong> Burger House</p>
+                <p><strong>Dirección:</strong> Avenida 45 #12-34</p>
+                <p><strong>Total:</strong> $18.50</p>
+                <p><strong>Hora:</strong> 2:15 PM</p>
+                <button class="btn send">Enviar</button>
+                <button class="btn assign">Asignar Repartidor</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div id="delivery" class="tab-content">
+          <section class="management-section">
+            <h2>Gestión de Repartidores</h2>
+            <button id="addDeliveryBtn" class="action-btn">
+              Agregar Repartidor
+            </button>
+            <div id="deliveryList" class="data-list delivery-list">
+              <!-- Delivery persons loaded here -->
+            </div>
+          </section>
+        </div>
+
+        <div id="reports" class="tab-content">
+          <section class="management-section">
+            <h2>Reportes de Desempeño</h2>
+            <div class="report-filters">
+              <select id="reportType">
+                <option value="sales">Ventas</option>
+                <option value="orders">Pedidos</option>
+                <option value="delivery">Reparto</option>
+              </select>
+              <input type="date" id="startDate" value="2024-01-01" />
+              <input type="date" id="endDate" value="2024-01-31" />
+              <button id="generateReportBtn" class="action-btn">
+                Generar Reporte
+              </button>
+            </div>
+            <div id="reportContent" class="data-list report-content">
+              <div class="report-summary">
+                <p><strong>Resumen del Período</strong></p>
+                <p>Total Pedidos: 1,234</p>
+                <p>Total Ventas: $45,678</p>
+                <p>Promedio por Pedido: $37.02</p>
+                <p>Restaurante Top: Pizza Palace</p>
+              </div>
+              <div class="report-chart-placeholder">
+                <p>
+                  📊 Aquí se mostraría un gráfico de líneas con las ventas del
+                  período seleccionado
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for adding delivery person -->
+    <div id="addDeliveryModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Agregar Repartidor</h3>
+          <button onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="addDeliveryForm">
+            <label for="full_name">Nombre Completo:</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="vehicle_type">Tipo de Vehículo:</label>
+            <select id="vehicle_type" name="vehicle_type" required>
+              <option value="Moto">Moto</option>
+              <option value="Bicicleta">Bicicleta</option>
+              <option value="Auto">Auto</option>
+            </select>
+
+            <label for="license_plate">Placa del Vehículo:</label>
+            <input type="text" id="license_plate" name="license_plate" required>
+
+            <button type="submit" class="btn-primary">Agregar</button>
+            <button type="button" onclick="closeModal()" class="btn-secondary">Cancelar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para agregar/editar restaurante -->
+    <div id="restaurantModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="restaurantModalTitle">Agregar/Editar Restaurante</h3>
+          <button onclick="document.getElementById('restaurantModal').classList.remove('open');">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="restaurantForm">
+            <input type="hidden" name="id" />
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" required />
+            <label for="category_id">Categoría:</label>
+            <input type="text" name="category_id" required />
+            <label for="zone_id">Ubicación (Zona):</label>
+            <input type="text" name="zone_id" required />
+            <label for="image_url">Imagen (URL):</label>
+            <input type="text" name="image_url" />
+            <label for="description">Descripción:</label>
+            <textarea name="description" rows="2"></textarea>
+            <label for="rating">Rating:</label>
+            <input type="number" name="rating" min="0" max="5" step="0.1" />
+            <div style="margin-top: 1rem; text-align: right;">
+              <button type="button" id="restaurantFormCancel" class="btn-secondary">Cancelar</button>
+              <button type="submit" class="btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Fin modal restaurante -->
+
+    <script type="module" src="js/admin-dashboard.js"></script>
+  </body>
+</html>

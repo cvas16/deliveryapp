@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - DeliveryApp</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="dashboard.html">🍕 DeliveryApp</a>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="Buscar restaurantes o productos...">
+                <button id="searchBtn">🔍</button>
+            </div>
+            <div class="nav-actions">
+                <select id="categoryFilter">
+                    <option value="all">Todas las categorías</option>
+                </select>
+                <select id="zoneFilter">
+                    <option value="all">Todas las ubicaciones</option>
+                </select>
+                <button id="logoutBtn">Cerrar Sesión</button>
+                <button class="cart-toggle" onclick="toggleCart()">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="restaurant-header" id="restaurantHeader">
+            <!-- Loaded dynamically -->
+        </div>
+        <div id="productsContainer">
+            <!-- Products loaded here -->
+        </div>
+    </main>
+    <!-- Cart Sidebar -->
+    <aside id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button onclick="toggleCart()">×</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cartTotal">0.00</span></strong>
+            </div>
+            <button id="checkoutBtn" onclick="checkout()" disabled>Realizar Pedido</button>
+        </div>
+    </aside>
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalProductName"></h3>
+                <button onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalProductDescription"></p>
+                <label>Cantidad: <input type="number" id="modalQuantity" value="1" min="1" onchange="updateModalTotal()"></label>
+                <div id="modalExtras"></div>
+                <div class="modal-total">Total: $<span id="modalTotal">0.00</span></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="addFromModal()">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="js/cart.js"></script>
+    <script src="js/restaurant.js"></script>
+</body>
+</html>
