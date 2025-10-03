@@ -1,0 +1,7 @@
+-----
+-No utilizar el checkbox del login los usuarios ya tienen sus roles predefinidos en la bd
+-Ver si la busqueda es solo restaurantes o tambien comidas.
+-Al darle click al card del restaurant te redirige a una pagina sin estilo (ignorarlo estuve toda la madrugada viendo como arreglarlo(no lo consegui :( ))
+-Integrar la api de mercado pago al realizar el pedido en el carrito de compras.
+-En el panel de administrador cranear la gestion de pedidos ahora solo visualiza todos los pedidos insertados en la bd (aca intevendria tambien lo de la api por que tendriamos que brindarle otra informacion)
+-ver la funcion de los reportes
