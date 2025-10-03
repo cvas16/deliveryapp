@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2025 a las 22:32:28
+-- Tiempo de generación: 03-10-2025 a las 09:55:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -42,11 +42,14 @@ CREATE TABLE `delivery_persons` (
 --
 
 INSERT INTO `delivery_persons` (`id`, `full_name`, `phone`, `vehicle_type`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Juan Pérez', '987654321', 'Moto', 'available', '2025-10-02 20:30:59', '2025-10-02 20:30:59'),
-(2, 'María García', '987654322', 'Bicicleta', 'busy', '2025-10-02 20:30:59', '2025-10-02 20:30:59'),
+(1, 'Juan Pérez', '987654321', 'Moto', 'busy', '2025-10-02 20:30:59', '2025-10-03 06:17:35'),
+(2, 'María García', '987654322', 'Bicicleta', 'available', '2025-10-02 20:30:59', '2025-10-02 21:25:16'),
 (3, 'Carlos López', '987654323', 'Auto', 'available', '2025-10-02 20:30:59', '2025-10-02 20:30:59'),
 (4, 'Ana Rodríguez', '987654324', 'Moto', 'resting', '2025-10-02 20:30:59', '2025-10-02 20:30:59'),
-(5, 'Pedro Sánchez', '987654325', 'Bicicleta', 'available', '2025-10-02 20:30:59', '2025-10-02 20:30:59');
+(5, 'Pedro Sánchez', '987654325', 'Bicicleta', 'available', '2025-10-02 20:30:59', '2025-10-02 20:30:59'),
+(6, 'Santiago', '987654321', 'Moto', 'available', '2025-10-02 21:29:02', '2025-10-02 21:29:02'),
+(7, 'Pedro', '234 123 543', 'Auto', 'available', '2025-10-03 04:53:51', '2025-10-03 04:53:51'),
+(8, 'Sebastian', '974654321', 'Bicicleta', 'available', '2025-10-03 06:08:13', '2025-10-03 06:08:13');
 
 -- --------------------------------------------------------
 
@@ -112,7 +115,7 @@ INSERT INTO `orders` (`id`, `user_id`, `restaurant_id`, `category`, `total`, `st
 (40, 1, 3, 'Sushi', 20.00, 'delivered', '[{\"productName\":\"Taco\",\"quantity\":1,\"totalPerUnit\":15.00}]', '2025-09-17 01:00:00'),
 (41, 1, 4, 'Tacos', 7.50, 'preparing', '[{\"productName\":\"Taco\",\"quantity\":1,\"totalPerUnit\":20.00}]', '2025-09-20 23:20:00'),
 (42, 1, 4, 'Tacos', 8.00, 'delivered', '[{\"productName\":\"Taco\",\"quantity\":1,\"totalPerUnit\":18.00}]', '2025-09-21 00:40:00'),
-(43, 1, 4, 'Tacos', 6.50, 'pending', '[{\"productName\":\"Taco\",\"quantity\":1,\"totalPerUnit\":16.00}]', '2025-09-21 01:50:00'),
+(43, 1, 4, 'Tacos', 6.50, 'cancelled', '[{\"productName\":\"Taco\",\"quantity\":1,\"totalPerUnit\":16.00}]', '2025-09-21 01:50:00'),
 (44, 1, 4, 'Tacos', 15.00, 'delivered', '[{\"productName\":\"Taco\",\"quantity\":1,\"totalPerUnit\":14.00}]', '2025-09-21 23:10:00'),
 (45, 1, 4, 'Tacos', 9.00, 'cancelled', '[{\"productName\":\"Taco\",\"quantity\":1,\"totalPerUnit\":22.00}]', '2025-09-22 00:30:00'),
 (46, 1, 4, 'Tacos', 12.50, 'delivered', '[{\"productName\":\"Taco\",\"quantity\":1,\"totalPerUnit\":19.00}]', '2025-09-22 01:40:00'),
@@ -229,11 +232,11 @@ CREATE TABLE `restaurants` (
 --
 
 INSERT INTO `restaurants` (`id`, `name`, `description`, `image_url`, `category_id`, `zone_id`, `rating`, `delivery_time_min`, `delivery_time_max`, `delivery_fee`, `minimum_order`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 'Pizza Palace', 'Pizza', 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=200&fit=crop', 1, 1, 4.5, 25, 35, 3.00, 0.00, 1, '2025-09-22 01:34:42', '2025-09-22 01:34:42'),
+(1, 'Pizza Palace', 'Pizza', 'https://res.cloudinary.com/dvk2jclev/image/upload/v1759476277/descarga_njllxr.jpg', 1, 1, 4.5, 25, 35, 3.00, 0.00, 1, '2025-09-22 01:34:42', '2025-10-03 07:24:57'),
 (2, 'Burger House', 'Hamburguesas', 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=200&fit=crop', 2, 2, 4.2, 20, 30, 2.50, 0.00, 1, '2025-09-22 01:34:42', '2025-09-22 01:34:42'),
-(3, 'Sushi Master', 'Sushi', 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=200&fit=crop', 3, 3, 4.8, 30, 40, 4.00, 0.00, 1, '2025-09-22 01:34:42', '2025-09-22 01:34:42'),
+(3, 'Sushi Master', 'Sushi', 'https://res.cloudinary.com/dvk2jclev/image/upload/v1759470438/descarga_q6qoht.jpg', 3, 3, 4.8, 30, 40, 4.00, 0.00, 1, '2025-09-22 01:34:42', '2025-10-03 05:47:34'),
 (4, 'Taco Loco', 'Mexicana', 'https://res.cloudinary.com/dvk2jclev/image/upload/v1759086302/images_gwzy90.jpg', 4, 1, 4.3, 25, 35, 2.50, 0.00, 1, '2025-09-22 01:34:42', '2025-09-28 19:05:14'),
-(5, 'Pasta Italia', 'Italiana', 'https://res.cloudinary.com/dvk2jclev/image/upload/v1759086213/descarga_c7mo03.jpg', 5, 2, 4.6, 30, 40, 3.50, 0.00, 1, '2025-09-22 01:34:42', '2025-09-28 19:03:51'),
+(5, 'Pasta Italia', 'Italiana', 'https://res.cloudinary.com/dvk2jclev/image/upload/v1759470488/descarga_1_swep91.jpg', 5, 2, 4.6, 30, 40, 3.50, 0.00, 1, '2025-09-22 01:34:42', '2025-10-03 05:48:18'),
 (6, 'Dragon Wok', 'China', 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&h=200&fit=crop', 6, 3, 4.1, 35, 45, 3.00, 0.00, 1, '2025-09-22 01:34:42', '2025-09-22 01:34:42');
 
 -- --------------------------------------------------------
@@ -287,7 +290,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone`, `address`, `password`, `is_admin`, `created_at`, `updated_at`) VALUES
 (1, 'Sebas', 'ir', 'prueba@correo.com', '913 245 609', 'upn', '$2b$10$jrtotEd6r7JTuhzD0WWVzeicukh8O9aZf3syGB1jlFYSVvCeKmpqW', 0, '2025-09-22 00:32:54', '2025-09-29 00:31:53'),
-(2, 'admin', 'pere<', 'admin@demo.com', '987634512', 'upn', '$2b$10$PMCcUs5Egw6vFfPDJGfWh./MLcmfjbyoLRsFbKT.n6WwmC7QwHQfG', 1, '2025-09-28 19:07:45', '2025-09-28 19:09:30');
+(3, 'admin', 'pere<', 'admin@demo.com', '987634512', 'upn', '$2b$10$ijN9c8fsbPUEZo2H1oCc7ezrIfe1N/a.jjN6SGbXZTYzqc.HWuU2S', 1, '2025-10-02 22:20:55', '2025-10-02 22:21:33');
 
 -- --------------------------------------------------------
 
@@ -384,7 +387,7 @@ ALTER TABLE `zones`
 -- AUTO_INCREMENT de la tabla `delivery_persons`
 --
 ALTER TABLE `delivery_persons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `orders`
@@ -420,7 +423,7 @@ ALTER TABLE `restaurant_categories`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `zones`
